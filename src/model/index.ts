@@ -1,0 +1,1 @@
+export {useParkingSpotsReducer} from "./ParkingSpots/hooks";
