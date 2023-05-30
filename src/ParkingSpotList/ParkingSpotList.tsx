@@ -18,11 +18,11 @@ function ParkingSpotStatus({ parkingSpot }: { parkingSpot: ParkingSpot }) {
         margin: "auto"
     }
 
-    return <div style={{ display: "inline-block" }}>
+    return <div style={{ display: "inline-block", marginLeft: "1em"}}>
         <div>{parkingSpot.id}</div>
         <div style={circleStyle}></div>
         <button
-            onClick={() => parkingSpotsReducer.setSpotAvailability(parkingSpot, "available")}
+            onClick={() => parkingSpotsReducer.freeSpot(parkingSpot)}
             disabled={isAvailable(parkingSpot)}
         >
             Exit

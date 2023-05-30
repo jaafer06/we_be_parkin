@@ -36,11 +36,17 @@ export  class ParkingSpotsReducer {
     ParkingSpotsReducer.notify(parkingSpots);
   }
 
-  setSpotAvailability(spot: ParkingSpot, newSpotState: SpotState) {
+  freeSpot(spot: ParkingSpot) {
     const parkingSpot = parkingSpots.find(parkingSpot => parkingSpot.id == spot.id);
     if (parkingSpot) {
-      parkingSpot.state = newSpotState;
+      parkingSpot.state = "available";
+      ParkingSpotsReducer.notify([...parkingSpots]);
     }
+  }
+
+  useSpot(spot: ParkingSpot, reservation: Reservation) {
+    spot.state = "in_use";
+    spot.reservation = reservation;
     ParkingSpotsReducer.notify([...parkingSpots]);
   }
 }
